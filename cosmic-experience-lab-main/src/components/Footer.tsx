@@ -12,6 +12,7 @@ const services = [
   "Mobile Apps",
   "E-Commerce",
   "UI/UX Design",
+  "Digital Marketing",
 ];
 
 const Footer = () => (

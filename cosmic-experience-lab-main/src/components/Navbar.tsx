@@ -62,12 +62,8 @@ const Navbar = () => {
         </button>
       </div>
 
-      <motion.div
-        initial={false}
-        animate={{ height: menuOpen ? "auto" : 0, opacity: menuOpen ? 1 : 0 }}
-        className="overflow-hidden border-t border-border/50 bg-background/95 backdrop-blur-xl md:hidden"
-      >
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-4">
+      <div className={`${menuOpen ? "block" : "hidden"} md:hidden border-t border-border/50 bg-background/95 backdrop-blur-xl w-full`}>
+        <div className="mx-auto flex w-full max-w-none flex-col gap-2 px-6 py-4">
           {navItems.map((item) => (
             <a
               key={item.href}
@@ -79,7 +75,7 @@ const Navbar = () => {
             </a>
           ))}
         </div>
-      </motion.div>
+      </div>
     </motion.nav>
   );
 };

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Send } from "lucide-react";
 import { toast } from "sonner";
 
-const services = ["Website", "App", "Ecommerce", "Other"];
+const services = ["Website", "App", "Ecommerce", "Digital Marketing", "Other"];
 
 const ContactSection = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", message: "" });
