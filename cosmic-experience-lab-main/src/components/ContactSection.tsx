@@ -18,8 +18,19 @@ const ContactSection = () => {
     const text = encodeURIComponent(
       `Hi, I'm ${name.trim()}.\nEmail: ${email.trim()}\nPhone: ${phone.trim()}\nService: ${service}\nMessage: ${message.trim()}`
     );
-    window.open(`https://wa.me/918667787621?text=${text}`, "_blank");
-    toast.success("Redirecting to WhatsApp...");
+    const recipient = "internetifyio@gmail.com";
+    const subject = `New inquiry from ${name.trim()}`;
+    const body = [
+      `Name: ${name.trim()}`,
+      `Email: ${email.trim()}`,
+      `Phone: ${phone.trim() || "Not provided"}`,
+      `Service: ${service || "Not specified"}`,
+      `Message: ${message.trim()}`,
+    ].join("\n");
+
+    const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+    toast.success("Opening your email app...");
   };
 
   const inputClass =
