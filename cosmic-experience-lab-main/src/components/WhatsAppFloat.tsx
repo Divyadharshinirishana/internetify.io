@@ -1,4 +1,4 @@
-import { MessageCircle } from "lucide-react";
+import { Whatsapp } from "lucide-react";
 
 const WhatsAppFloat = () => (
   <a
@@ -8,7 +8,7 @@ const WhatsAppFloat = () => (
     className="whatsapp-float"
     aria-label="Chat on WhatsApp"
   >
-    <MessageCircle className="w-7 h-7 text-white" />
+    <Whatsapp className="w-7 h-7 text-white" />
   </a>
 );
 
