@@ -1,7 +1,7 @@
-import { Instagram, Linkedin, Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
+import { Instagram, Linkedin, Facebook, Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
 
 const quickLinks = [
-  { label: "Home", href: "#" },
+  { label: "Home", href: "#home" },
   { label: "Services", href: "#services" },
   { label: "About", href: "#why-us" },
   { label: "Contact", href: "#contact" },
@@ -26,8 +26,9 @@ const Footer = () => (
           </p>
           <div className="flex items-center gap-3">
             {[
-              { icon: Instagram, href: "https://instagram.com" },
-              { icon: Linkedin, href: "https://linkedin.com" },
+              { icon: Instagram, href: "https://www.instagram.com/internetify.io?igsh=Znhtb3ZqcWU3bjNt" },
+              { icon: Linkedin, href: "https://www.linkedin.com/company/internetify-io/" },
+              { icon: Facebook, href: "https://www.facebook.com/profile.php?id=61591896150791&mibextid=ZbWKwL" },
             ].map(({ icon: Icon, href }) => (
               <a
                 key={href}
@@ -78,11 +79,11 @@ const Footer = () => (
           <ul className="space-y-3">
             <li className="flex items-center gap-2.5 text-muted-foreground text-sm font-body">
               <Phone className="w-4 h-4 text-primary" />
-              +91 8667787621
+              <a href="tel:+918667787621" className="hover:text-primary transition-colors">+91 8667787621</a>
             </li>
             <li className="flex items-center gap-2.5 text-muted-foreground text-sm font-body">
               <Mail className="w-4 h-4 text-primary" />
-              internetifyio@gmail.com
+              <a href="mailto:internetifyio@gmail.com" className="hover:text-primary transition-colors">internetifyio@gmail.com</a>
             </li>
             <li className="flex items-start gap-2.5 text-muted-foreground text-sm font-body">
               <MapPin className="w-4 h-4 text-primary shrink-0 mt-0.5" />

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
+  { label: "Home", href: "#home" },
   { label: "Why Us", href: "#why-us" },
   { label: "Services", href: "#services" },
   { label: "Contact", href: "#contact" },
@@ -18,11 +19,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleClick = (href: string) => {
-    const el = document.querySelector(href);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+  const handleNavClick = () => {
     setMenuOpen(false);
   };
 
@@ -38,22 +35,20 @@ const Navbar = () => {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <button
-          onClick={() => handleClick("#home")}
-          className="font-display text-xl font-bold tracking-tight"
-        >
+        <a href="#home" onClick={handleNavClick} className="font-display text-xl font-bold tracking-tight">
           <span className="text-gradient">internetify</span>
-        </button>
+        </a>
 
         <div className="hidden items-center gap-1 md:flex">
           {navItems.map((item) => (
-            <button
+            <a
               key={item.href}
-              onClick={() => handleClick(item.href)}
+              href={item.href}
+              onClick={handleNavClick}
               className="rounded-lg px-4 py-2 text-sm font-body text-muted-foreground transition-colors hover:bg-secondary/50 hover:text-foreground"
             >
               {item.label}
-            </button>
+            </a>
           ))}
         </div>
 
@@ -61,6 +56,7 @@ const Navbar = () => {
           onClick={() => setMenuOpen((prev) => !prev)}
           className="flex h-10 w-10 items-center justify-center rounded-full border border-border/60 bg-background/70 text-foreground backdrop-blur md:hidden"
           aria-label="Toggle navigation"
+          aria-expanded={menuOpen}
         >
           {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -73,13 +69,14 @@ const Navbar = () => {
       >
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-4">
           {navItems.map((item) => (
-            <button
+            <a
               key={item.href}
-              onClick={() => handleClick(item.href)}
+              href={item.href}
+              onClick={handleNavClick}
               className="rounded-lg px-3 py-2 text-left text-sm font-body text-muted-foreground transition-colors hover:bg-secondary/50 hover:text-foreground"
             >
               {item.label}
-            </button>
+            </a>
           ))}
         </div>
       </motion.div>
