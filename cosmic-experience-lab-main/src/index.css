@@ -94,12 +94,15 @@ html {
 
 @layer utilities {
   .whatsapp-float {
-    @apply fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300;
-    background: #25D366;
-    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    @apply fixed bottom-6 right-6 z-50 flex items-center justify-center transition-all duration-300;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 1rem;
+    background: linear-gradient(135deg, #25D366, #1FA54A);
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.25);
   }
   .whatsapp-float:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 30px rgba(37, 211, 102, 0.6);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 14px 30px rgba(37, 211, 102, 0.35);
   }
 }
