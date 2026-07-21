@@ -18,7 +18,7 @@ const ContactSection = () => {
     const text = encodeURIComponent(
       `Hi, I'm ${name.trim()}.\nEmail: ${email.trim()}\nPhone: ${phone.trim()}\nService: ${service}\nMessage: ${message.trim()}`
     );
-    window.open(`https://wa.me/919940982795?text=${text}`, "_blank");
+    window.open(`https://wa.me/918667787621?text=${text}`, "_blank");
     toast.success("Redirecting to WhatsApp...");
   };
 
