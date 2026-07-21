@@ -1,8 +1,16 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
+
+const navItems = [
+  { label: "Why Us", href: "#why-us" },
+  { label: "Services", href: "#services" },
+  { label: "Contact", href: "#contact" },
+];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -12,7 +20,10 @@ const Navbar = () => {
 
   const handleClick = (href: string) => {
     const el = document.querySelector(href);
-    el?.scrollIntoView({ behavior: "smooth" });
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    setMenuOpen(false);
   };
 
   return (
@@ -26,7 +37,7 @@ const Navbar = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         <button
           onClick={() => handleClick("#home")}
           className="font-display text-xl font-bold tracking-tight"
@@ -34,21 +45,44 @@ const Navbar = () => {
           <span className="text-gradient">internetify</span>
         </button>
 
-        <div className="flex items-center gap-1">
-          <button
-            onClick={() => handleClick("#why-us")}
-            className="px-4 py-2 text-sm font-body text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-secondary/50"
-          >
-            Why Us
-          </button>
-          <button
-            onClick={() => handleClick("#contact")}
-            className="px-4 py-2 text-sm font-body text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-secondary/50"
-          >
-            Contact
-          </button>
+        <div className="hidden items-center gap-1 md:flex">
+          {navItems.map((item) => (
+            <button
+              key={item.href}
+              onClick={() => handleClick(item.href)}
+              className="rounded-lg px-4 py-2 text-sm font-body text-muted-foreground transition-colors hover:bg-secondary/50 hover:text-foreground"
+            >
+              {item.label}
+            </button>
+          ))}
         </div>
+
+        <button
+          onClick={() => setMenuOpen((prev) => !prev)}
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-border/60 bg-background/70 text-foreground backdrop-blur md:hidden"
+          aria-label="Toggle navigation"
+        >
+          {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </div>
+
+      <motion.div
+        initial={false}
+        animate={{ height: menuOpen ? "auto" : 0, opacity: menuOpen ? 1 : 0 }}
+        className="overflow-hidden border-t border-border/50 bg-background/95 backdrop-blur-xl md:hidden"
+      >
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-4">
+          {navItems.map((item) => (
+            <button
+              key={item.href}
+              onClick={() => handleClick(item.href)}
+              className="rounded-lg px-3 py-2 text-left text-sm font-body text-muted-foreground transition-colors hover:bg-secondary/50 hover:text-foreground"
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
+      </motion.div>
     </motion.nav>
   );
 };
