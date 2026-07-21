@@ -29,7 +29,7 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
           <span className="text-foreground">.io</span>
         </h1>
         <p className="mt-3 text-sm uppercase tracking-[0.2em] text-muted-foreground">
-          Loading experience
+          A Software Development
         </p>
       </div>
     </motion.div>
